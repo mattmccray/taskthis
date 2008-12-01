@@ -115,7 +115,7 @@ class TasklistController < ApplicationController
          tasklists << tasklist
       end
 
-      @response.headers["content-type"] = "text/plain"
+      response.headers["content-type"] = "text/plain"
 
       render :text=>tasklists.to_yaml
    end
