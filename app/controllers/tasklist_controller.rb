@@ -193,7 +193,7 @@ class TasklistController < ApplicationController
          tl.save
          
          logger.info("#{tl.to_yaml}\n\n")
-         redirect_to tasklist_url( :id=>tl.id )
+         redirect_to tasklist_view_url( :id=>tl.id )
       else
          render_nothing "403 Forbidden"
       end
