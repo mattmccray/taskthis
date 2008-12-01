@@ -5,4 +5,4 @@ server_env: development
 app_url: http://taskthis.elucidata-apps.com
 app_base_uri: 
 app_version: 0.6
-show_ads: false
+show_ads: true

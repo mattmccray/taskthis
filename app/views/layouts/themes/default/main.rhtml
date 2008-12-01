@@ -112,7 +112,7 @@
             <div class="box_container">
                <div class="box_content">
             
-                  <h2><%= link_to "Tasklists", profile_url %></h2>
+                  <h2><%= link_to "Tasklists", profile_url(:id=>nil) %></h2>
                   <hr/>               
 
                   <ul id="user_tasklists">
@@ -121,7 +121,7 @@
                         <% cname = (tasklist.percent_complete == 100) ? "complete" : "incomplete" %>
                         <li id="tasklist_<%= tasklist.id  %>">
                            <span class="handle"><%= image_tag "tasklist_icon_#{cname}.gif", :alt=>cname, :size=>"10x10"%></span>
-                           <%= link_to_unless_current tasklist.title, tasklist_url( :id=>tasklist.id ), :id=>"tasklist_#{ tasklist.id }_link" %></li>
+                           <%= link_to_unless_current tasklist.title, tasklist_view_url( :id=>tasklist.id ), :id=>"tasklist_#{ tasklist.id }_link" %></li>
                      <% end %>
                   <% else %>
                      <li>None Available</li>

@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # TASK URLS
   map.tasklist 'tasklist', :controller => 'tasklist', :action => 'index'
+  map.tasklist_view 'tasklist/:id', :controller => 'tasklist', :action => 'index'
   map.reorder 'tasklist/reorder', :controller=> 'tasklist', :action => 'reorder'
   map.reorder_taskitems 'tasklist/reorder_taskitems', :controller=> 'tasklist', :action => 'reorder_taskitems'
   map.public 'public/:id', :controller => 'tasklist', :action => 'public'
