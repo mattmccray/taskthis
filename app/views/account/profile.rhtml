@@ -1,0 +1,32 @@
+<% if @is_public %>
+<h1>Profile for <%= @user.name %></h1>
+
+<%= render :partial=>'public_profile', :locals=>{ :user=>@user } %>
+
+   <b>Public Tasklists</b><br/>
+   <%= render :partial=>'tasklists', :locals=>{:is_public=>@is_public} %>
+
+<% else %>
+<h1>Preferences</h1>
+<%= render :partial=>'tabset', :locals=>{ :current=>'profile' } %>
+
+<%= render :partial=>'user_profile', :locals=>{ :user=>@user } %>
+
+   <div class="form form-padding">
+<% form_remote_tag( :url        => url_for( :controller=>'tasklist', :action=>'update_tasklist_vis', :id=>current_user.id ),
+                     :html       => { :id => "tasklist-form" },
+                     :loading    => "Profile.on_tasklists_save_loading()",
+                     :complete   => "Profile.on_tasklists_save_complete(request)"
+) do %>
+      <b>Tasklists</b><br/>
+      <%= render :partial=>'tasklists', :locals=>{:is_public=>@is_public} %>
+      <br />
+      <div id="save_buttons">
+         <input type="submit" value="Save" />
+      </div>
+      <%= image_tag "wait.gif", :id=>'tasklist_loading', :style=>'display:none' %>
+<% end %>
+   </div>
+   
+<% end %>
+

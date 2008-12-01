@@ -1,0 +1,65 @@
+<h1>Please login</h1>
+
+<% if flash['notice'] %>
+
+   <div id="errorExplanation">
+      <h2>Login Error</h2>
+      <p><%= flash['notice'] %></p>
+   </div>
+
+<% end %>
+
+<form action="/login" method="POST">
+
+<!-- begin div.form -->
+<div id="form" class="form">
+   
+   <table>
+      <tr>
+         <td>
+            <label for="user_login">Login:</label>
+         </td>
+         <td>
+            <input type="text" name="user_login" id="user_login" size="30" value=""/><br/>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <label for="user_password">Password:</label><br/>
+         </td>
+         <td>
+            <input type="password" name="user_password" id="user_password" size="30"/><br/>
+         </td>
+      </tr>
+      <tr>
+         <td>&nbsp;</td>
+         <td>
+            <input type="checkbox" name="remember_me" id="remember_me" value="1" />
+            <input type="hidden" name="remember_me" value="0"/>
+            <label for="remember_me">Remember me for a little while</label>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+         <td>&nbsp;</td>
+         <td>
+            <input type="submit" name="login" value="Login" />
+            &nbsp;
+            <%= link_to 'Forgot your password?', forgot_pwd_url %>
+         </td>
+      </tr>
+   </table>
+   
+</div>
+<!-- end div.form -->
+      
+</form>
+
+<p>
+   <b>Don't have an account?</b><br/>
+
+   <a href="<%= url_for signup_url %>">Register now</a>! It's fast and easy!
+
+</p>

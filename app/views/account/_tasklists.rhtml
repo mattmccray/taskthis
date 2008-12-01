@@ -1,0 +1,36 @@
+<table class="Tasklist" width="100%" cellspacing="0" cellpadding="3" border="0">
+        <tr>
+<% if not is_public %>
+           <th><%= image_tag "visible.gif", :alt=>"View in Sidebar", :title=>"View in Sidebar", :align=>'absmiddle' %></th>
+<% end %>
+           <th title="Percent Complete">%</th>
+           <th align="left">Tasklist Name</th>
+           <th align="left">&nbsp;</th>
+        </tr>
+        
+<% @user_tasklists.each_with_index do |tl, i| %>
+         <tr class="<%= (i % 2 == 0) ? "Even-Row" : "Odd-Row"%>">
+   <% if not is_public %>
+            <td style="width:30px" align="center">
+               <input id="tasklist_<%= tl.id %>_view_in_sidebar" name="tasklist[<%= tl.id %>][view_in_sidebar]" type="checkbox" <%= "checked" if tl.view_in_sidebar? %> value="1" />
+               <input name="tasklist[<%= tl.id %>][view_in_sidebar]" type="hidden" value="0" />
+            </td>
+   <% end %>
+            <td style="width: 30px;" align="right">
+              <span class="field-desc"><%= tl.percent_complete %>%</span>
+            </td>
+           <td>
+   <% if is_public %>              
+              <%= link_to tl.title, public_url(:id => tl.id)  %>
+   <% else %>
+              <%= link_to tl.title, tasklist_url(:id => tl.id)  %>
+   <% end %>
+           </td>
+           <td style="width: 30px;" align="right">
+         <% if tl.is_public? %>
+                 <span class="RSS"><%= link_to "RSS", rss_url(:id=>tl.id) %></RSS>
+         <% end %>
+           </td>
+        </tr>      
+<% end %>
+</table>

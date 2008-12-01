@@ -1,0 +1,64 @@
+<h1>Register</h1>
+
+
+<% form_tag {:action=>'/signup'} do %>
+
+<%= error_messages_for 'user' %>
+
+<!-- begin div.form -->
+<div id="form" class="form">
+   
+   <table>
+      <tr>
+         <td><%= field_label "Display Name", 'user', 'name', '(Optional)' %></td>
+         <td><%= text_field "user", "name", :size => 30 %></td>
+      </tr>
+      <tr>
+         <td><%= field_label "Email Address", 'user', 'email' %></td>
+         <td><%= text_field "user", "email", :size => 30 %></td>
+      </tr>
+      <tr>
+         <td><%= field_label "Desired Login", 'user', 'login' %></td>
+         <td><%= text_field "user", "login", :size => 30 %></td>
+      </tr>
+      <tr>
+         <td><%= field_label "Choose Password", 'user', 'password' %></td>
+         <td><%= password_field "user", "password", :size => 30 %></td>
+      </tr>
+      <tr>
+         <td><%= field_label "Confirm Password", 'user', 'password_confirmation' %></td>
+         <td><%= password_field "user", "password_confirmation", :size => 30 %></td>
+      </tr>
+      <tr>
+         <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+         <td>&nbsp;</td>
+         <td>
+            <input type="submit" value="Submit Regisration"/>
+            &nbsp;
+            <%= link_to 'Cancel', "/" %>
+         </td>
+      </tr>
+   </table>
+   
+</div>
+<!-- end div.form -->
+
+<% end %>
+
+<p>
+   <b>Things to remember:</b>
+   
+   <ul>
+      <li>
+         Registration is free!
+      </li>
+      <li>
+         Privacy is important. Your personal information will never be sold or otherwise distributed. For more, you can read the <%= link_to "Privacy Policy", "/privacy.html" %>.
+      </li>
+      <li>
+         Be sure the read the <%= link_to "Terms of Service", "/terms.html" %>.
+      </li>
+   </ul>
+</p>

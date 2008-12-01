@@ -1,0 +1,30 @@
+<h1>Preferences</h1>
+
+<%= render :partial=>'tabset', :locals=>{ :current=>'preferences' } %>
+
+
+<% form_remote_tag( :url        => url_for( :action=>'update_prefs', :id=>current_user.id ),
+                     :html       => { :id => "prefs-form" },
+                     :loading    => "Prefs.on_save_loading()",
+                     :complete   => "Prefs.on_save_complete(request)"
+) do %>
+
+
+<div class="form form-padding">
+   
+   <%= pref_check_box "animate", "F/X Animation" %><br/>
+   <%= pref_check_box "show_addtask", "Show 'Add Task' form by default" %><br/>
+   <%= pref_check_box "show_notes", "Show notes by default" %><br/>
+   <%= pref_check_box "show_completed", "Show Completed Tasks by default" %><br/>
+
+   <br/>
+   
+   <div id="save_buttons">
+      <input type="submit" value="Save" />
+   </div>
+   
+   <%= image_tag "wait.gif", :id=>'prefs_loading', :style=>'display:none' %>
+
+</div>
+
+<% end %>

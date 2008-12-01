@@ -1,0 +1,32 @@
+<h1>Preferences</h1>
+
+<%= render :partial=>'tabset', :locals=>{ :current=>'import_export' } %>
+
+<div class="form form-padding">
+
+<% form_tag( import_url, {:onsubmit=>'Profile.on_import()'} ) do %>
+   <b>Import</b><br/>
+   <span class="field-desc">Paste the tasklist data, in YAML format, into this text box.<br/></span>
+   <textarea name="yaml_data" rows="10" style="width: 450px;"></textarea><br/>
+   
+   <input id="import_button" type="submit" value="Import from YAML"/>
+   <%= image_tag "wait.gif", :id=>'import_loading', :style=>'display:none' %>
+   <br/>
+
+<% end %>
+
+   <br/>
+
+<% form_tag( export_url, {:onsubmit=>'Profile.on_export()'} ) do %>
+
+   <b>Export</b><br/>
+   <span class="field-desc">It's your data, take it with you! Select your data format of choice.<br/></span>
+   <select id="export_type" name="export_type" size="1">
+        <option value="YAML" selected>Export your tasklists in YAML format</option>
+        <option value="XML">Export your tasklists in XML format</option>
+   </select><br/>
+   <br/>
+   <input id="export_button" type="submit" value="Export"/>
+   <%= image_tag "wait.gif", :id=>'export_loading', :style=>'display:none' %>
+</div>
+<% end %>

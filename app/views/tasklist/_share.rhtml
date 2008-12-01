@@ -1,0 +1,28 @@
+<!-- begin div.share_tasklist -->
+<div id="share_tasklist" style="display:none;">
+   <div class="action_box_content">
+      <% form_remote_tag( :url        => url_for( :action=>'edit', :id=>tasklist.id ),
+                           :html       => { :id => "tasklist-sharing-form-#{ @tasklist.id }" },
+                           :loading    => "Tasklist.on_sharing_loading()",
+                           :complete   => "Tasklist.on_sharing_complete(request)"
+      ) do %>
+      <!-- b>Public Access</b><br/ -->
+
+      <%= check_box 'tasklist', 'is_public' %>
+      <label for="tasklist_public">Allow RSS and read-only page access</label><br/>
+      <span class="field-desc"  style="padding-left: 25px;">Public URL: <%= link_to url_for( public_url(:id=>tasklist.id) ), url_for( public_url(:id=>tasklist.id) )%></span><br/>
+      <span class="field-desc" style="padding-left: 25px;">RSS URL: <%= link_to url_for( rss_url(:id=>tasklist.id) ), url_for( rss_url(:id=>tasklist.id) ) %></span><br/>
+      <br/>
+
+      <div id="sharing_buttons" class="action_buttons">
+         <input type="submit" value="Save" />
+         &nbsp;
+         <a href="javascript:void(0)" onclick="Tasklist.close_action()">Cancel</a>
+      </div>
+      
+      <%= image_tag "wait.gif", :id=>'sharing_loading', :style=>'display:none' %>
+      
+      <% end %>
+   </div>
+</div>
+<!-- end div.share_tasklist -->
