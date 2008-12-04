@@ -93,7 +93,7 @@ var Tasklist = {
 
    do_submit: function(form) {
       // calling form.submit seems to override the onsubmit handler...
-      $(form).onsubmit();
+      $(form).onsubmit(); // fire('submit'); //
    },
 
    toggle_action: function( action ) {

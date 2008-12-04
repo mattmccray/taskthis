@@ -337,7 +337,7 @@ class TasklistController < ApplicationController
    #
    def update_tasklist_vis
       if request.post?
-         tasklists = (params[:tasklist] || [])
+         tasklists = (params[:tasklist] || {})
       
          tasklists.each_key do |id|
             tasklist = Tasklist.find(id)
